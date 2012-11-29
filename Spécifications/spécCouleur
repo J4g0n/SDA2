@@ -1,0 +1,22 @@
+spéc Couleur étend BASE
+	sorte couleur
+	
+Opérations:
+	ic: Nat, Nat, Nat -> couleur // renvoie la couleur obtenue à partir des trois composantes rouge, vert, et bleu
+	r: couleur -> Nat // renvoie la couleur rouge
+	v: couleur -> Nat // renvoie la couleur verte
+	b: couleur -> Nat // renvoie la couleur bleu
+	blanc: -> couleur // renvoie la couleur blanche
+	noir: -> noir // renvoie la couleurs noire
+
+Préconditions:
+	ic(r,v,b)=r≤MaxCouleur et v≤MaxCouleur et b≤MaxCouleur
+		
+Axiomes:
+	r(ic(r,v,b))=r
+	v(ic(r,v,b))=v
+	b(ic(r,v,b))=b
+	blanc()=ic(MaxCouleur,MaxCouleur,MaxCouleur)
+	noir()=ic(0,0,0)
+	
+fin_spéc

@@ -1,0 +1,36 @@
+spéc ARBQ1 étend ARBQ
+	sorte arbq1
+	
+Opérations:
+	damier: Nat -> arbq1 // renvoie un damier
+	symh_aux: arbq1 -> arbq1 // fonction auxiliaire de symétrie horizontale
+	symh: arbq1 -> arbq1 // applique une symétrie horizontale à l'image
+	symv: arbq1 -> arbq1 // applique un symétrie verticale à l'image
+	symv_aux: arbq1 -> arbq1 // fonction auxiliaire de symétrie verticale
+	rotg: arbq1 -> arbq1 // applique un rotation à gauche
+	rotd: arbq1 -> arbq1 // applique un rotation à droite	
+	dzoo: arbq1 -> arbq1 // crée une image réduite une ligne sur deux
+	
+Préconditions:
+	pré damier(x)=(x==2^y)et(x≠0)
+	
+Axiomes:
+	damier(0)=f(noir())
+	damier(1)=e(noir(),blanc(),blanc(),noir())
+	damier(n)=e(damier(n/2),damier(n/2),damier(n/2),damier(n/2))
+	symh_aux(f(c))=c
+	symh_aux(i(no,ne,so,se))=e(symh_aux(so),symh_aux(se),symh_aux(no),symh_aux(ne))
+	symh(f(c))=f(c)
+	symh(i(no,ne,so,se))=e(so,se,symh_aux(no),symh_aux(ne))
+	symv_aux(f(c))=c
+	symv_aux(i(no,ne,so,se))=e(symv_aux(ne),symv_aux(no),symv_aux(se),symv_aux(so))
+	symv(f(c))=f(c)
+	symv(i(no,ne,so,se))=e(no,symv_aux(no),so,symv_aux(so))
+	rotg(f(c))=f(c)
+	rotg(i(no,ne,so,se))=e(rotg(so),rotg(no),rotg(se),rotg(ne))
+	rotd(f(c))=f(c)
+	rotd(i(no,ne,so,se))=e(rotd(ne),rotd(se),rotd(no),rotd(so))
+	dzoo(f(c))=f(c)
+	dzoo(i(no,ne,so,se))=e(dzoo(no),dzoo(ne),dzoo(so),dzoo(se))
+	
+fin_spéc

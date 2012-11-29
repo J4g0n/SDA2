@@ -1,0 +1,46 @@
+spéc ARBQ étend COULEUR
+	sorte arbq
+	
+Opérations:
+	f: couleur -> arbq // renvoie un arbre quaterneraire réduit à une feuille
+	e: arbq, arbq, arbq, arbq -> arbq // renvoie un arbre quaternaire réduit à une feuille
+	ne: arbq -> arbq // renvoie le cote nord-est de l'arbre
+	no: arbq -> arbq // renvoie le cote nord-ouest de l'arbre
+	se: arbq -> arbq // renvoie le cote sud-est de l'arbre
+	so: arbq -> arbq // renvoie le cote sud-ouest de l'arbre
+	h: arbq -> Nat // renvoie la hauteur d'un arbre
+	c: arbq -> couleur // renvoie l'étiquette d'une feuille
+	estf: arbq -> Bool // test si l'arbre est réduit à une feuille
+	nf: arbq -> Nat // renvoie le nombre de feuille de l'arbre
+	p: arbq, Nat, Nat -> couleur // renvoie l'étiquette en fonction des coordonnées
+
+Préconditions:
+	pré c(a)=estf(a)
+	pré no(a)=pré ne(a)=pré so(a)=pré se(a)=¬estf(a)
+	pré c(a)=estf(a)
+	pré p(a,x,y)=x et y<2^(h(a)) 
+	
+Axiomes:
+	ne(f(c))=no(f(c))=se(f(c))=so(f(c))=f(c)
+	ne(e(no,ne,so,se))=ne
+	no(e(no,ne,so,se))=no
+	se(e(no,ne,so,se))=se
+	so(e(no,ne,so,se))=so
+	h(f(c))=0
+	h(e(no,ne,so,se))=1+h(no)
+	c(f(c))=c
+	estf(f(c))=vrai
+	estf(e(no,ne,so,se))=faux
+	nf(a)=4^(h(a))
+	p(f(c),x,y)=c(f(c))
+	p(e(no,ne,so,se),x,y)=
+		si x>2^(h(a)-1) alors 
+			si y>2^(h(a)-1) alors p(se,x-2^(h(a)-1),y-2^(h(a)-1))
+			sinon p(ne,x-2^(h(a)-1),y) fin_si
+		sinon
+			si y>2^(h(a)-1) alors p(so,x,y-2^(h(a)-1))
+			sinon p(no,x,y) fin_si
+		fin_si
+		
+fin_spéc
+		
