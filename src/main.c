@@ -7,9 +7,9 @@
 
 void aide()
 {
-	printf("Tapez 0 pour quitter le programme.\n");
+	printf("\nTapez 0 pour quitter le programme.\n");
 	printf("Tapez 1 pour générer automatiquement un jeu d'image.\n");
-	printf("Tapez 2 pour travailler une image en particulier.\n");
+	printf("Tapez 2 pour travailler une image en particulier.\n\n");
 }
 
 Arbq modif(Arbq (**func)(Arbq),Couleur (**fonc)(Couleur))
@@ -20,14 +20,14 @@ Arbq modif(Arbq (**func)(Arbq),Couleur (**fonc)(Couleur))
 	atmp=NULL;
 	while(index!=0)
 	{
-		printf("Tapez 1 pour opérer des modifications sur les pixels\n");
+		printf("\nTapez 1 pour opérer des modifications sur les pixels\n");
 		printf("Tapez 2 pour opérer des modifications sur la forme de	l'image\n");
 		printf("Tapez 0 pour sortir\n\n");
 		scanf("%d",&index);
 		if(index==1)
 		{
 			int i;
-			printf("Tapez 0 pour inverser les couleurs\n");
+			printf("\nTapez 0 pour inverser les couleurs\n");
 			printf("Tapez 1 pour changer l'image en niveau de gris\n");
 			printf("Tapez 2 pour niveler les couleurs\n\n");
 			scanf("%d",&i);
@@ -38,7 +38,7 @@ Arbq modif(Arbq (**func)(Arbq),Couleur (**fonc)(Couleur))
 		if(index==2)
 		{
 			int i;
-			printf("Tapez 0 pour avoir un miroir horizontale de l'image\n");
+			printf("\nTapez 0 pour avoir un miroir horizontale de l'image\n");
 			printf("Tapez 1 pour avoir une symétrie horizontale\n");
 			printf("Tapez 2 pour avoir un miroir vertical\n");
 			printf("Tapez 3 pour avoir une symétrie verticale\n");
@@ -66,9 +66,9 @@ main()
 	char *filename[12]={"miroirH","symh","miroirV","symv","rotg","rotd","dzoo","cpa","invc","nivg","tresh","jeux/"};
 	char *name;
 
-	aide();
 	while(index!=0)
 	{
+		aide();
 		arb=import("strasbourg_matrix.mat");
 		scanf("%d",&index);
 		switch(index)
@@ -77,6 +77,10 @@ main()
 			case 1:
 			{
 				printf("Génération d'un jeu d'image\n");
+				printf("Génération du fichier %s\n","jeux/damier");
+				a=damier(9);
+				exportBmp(a,"jeux/damier");
+				a=dela(a);
 				for(i=0;i<8;i++)
 				{
 					n=strlen(filename[i])+strlen(filename[11])+1;
@@ -110,7 +114,6 @@ main()
 				index=2;
 				break;
 			}
-			case 10: { aide(); break; }
 			default:
 			{
 				printf("Tapez 10 pour obtenir de l'aide.\n");
