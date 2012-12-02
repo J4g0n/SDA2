@@ -1,0 +1,10 @@
+Présentation projet:
+	Ce programme se propose d'utiliser une structure d'arbre quaternaire afin de 
+réaliser des modifications sur des images.
+
+Utilisation programme:
+	Après le lancement du programme il est possible de générer un jeu d'image
+automatiquement en tapant 1, ou bien d'effectuer plusieurs actions sur une seule
+image en tapant 2, puis en choisissant les modifications que l'on souhaite
+apporter à l'image.
+	Toutes les images obtenues sont disponibles dans le répertoire jeux.

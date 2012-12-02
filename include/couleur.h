@@ -1,3 +1,13 @@
+/**
+ * \file       couleur.h
+ * \author     Andreux Simon
+ * \version    1.0
+ * \date       30 nov 2012
+ * \brief      include de couleur.c 
+ *
+ * \details    Contient les prototypes des fonctions relatives au traitement des couleurs
+ *
+ */
 #ifndef __couleur_h_
 #define __couleur_h_
 
@@ -8,52 +18,47 @@
  */
 typedef struct 
 {
-	Nat r;
-	Nat v;
-	Nat b;
-}	*Couleur,strCouleur;
+	Nat r; /** !<composante rouge */
+	Nat v; /** !<composante verte */
+	Nat b; /** !<composante bleu */
+}	*Couleur,strCouleur; /** !<type couleur */
 
 /**
- * \fn ic
  * \brief renvoie la couleur obtenue à partir des trois composantes
  * rouge, vert, et bleu
- * \param Nat rouge
- * \param Nat vert
- * \param Nat bleu
+ * \param r Nat rouge
+ * \param v Nat vert
+ * \param b Nat bleu
  * \return Couleur
  * \pre r≤MaxCouleur et v≤MaxCouleur et b≤MaxCouleur
  */
-Couleur ic(Nat,Nat,Nat);
+Couleur ic(Nat r,Nat v,Nat b);
 
 /**
- * \fn r
  * \brief renvoie la couleur rouge
- * \param Couleur c
+ * \param c Couleur
  * \return Nat rouge
  * \pre c≠NULL
  */
-Nat r(Couleur);
+Nat r(Couleur c);
 
 /**
- * \fn v
  * \brief renvoie la couleur verte
  * \param Couleur c
  * \return Nat vert
  * \pre c≠NULL
  */
-Nat v(Couleur);
+Nat v(Couleur c);
 
 /**
- * \fn b
  * \brief renvoie la couleur bleu
- * \param Couleur c
+ * \param c Couleur
  * \return Nat bleu 
  * \pre c≠NULL
  */
-Nat b(Couleur);
+Nat b(Couleur c);
 
 /**
- * \fn blanc
  * \brief renvoie la couleur blanche
  * \param rien
  * \return Couleur blanche 
@@ -62,7 +67,6 @@ Nat b(Couleur);
 Couleur blanc();
 
 /**
- * \fn noir
  * \brief renvoie la couleur noire
  * \param rien 
  * \return Couleur noire

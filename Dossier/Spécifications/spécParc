@@ -2,7 +2,7 @@ spéc PARC étend ARBQ1
 	sorte arbq1
 	
 Opérations:
-	parc: arbq1, (func: couleur -> couleur) -> arbq1 // fonction de parcour d'un arbre en profondeur
+	parc: arbq1, (func: couleur -> couleur) -> arbq1 // fonction de parcours d'un arbre en profondeur
 	invc: couleur -> couleur // inversion les couleurs d'une image
 	nivg: couleur -> couleur // transforme une image couleur en niveau de gris
 	tresh: couleur -> couleur // seuille une image en noircissant les pixels dont la luminosité dépasse une certaine valeur
@@ -13,7 +13,7 @@ Axiomes:
 	parc(f(c),func)=f(func(c))
 	parc(i(no,ne,so,se),func)=i(parc(no,func),parc(ne,func),parc(so,func),parc(se,func))
 	invc(c)=ic(255-r(c),255-v(c),255-b(c))
-	nivg(c)=ic(0.2125*r(c),0.7154*v(c),0.0721*b(c))
+	nivg(c)=ic((r(c)+v(c)+b(c))/3,(r(c)+v(c)+b(c))/3,(r(c)+v(c)+b(c))/3)
 	tresh(c)=
 		si ((r(c)+v(c)+b(c))/3)>k alors noir()
 		sinon c fin_si

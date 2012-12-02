@@ -1,104 +1,103 @@
+/**
+ * \file       arbq1.h
+ * \author     Andreux Simon
+ * \version    1.0
+ * \date       30 nov 2012
+ * \brief      include de arbq1.c 
+ *
+ * \details    Contient les prototypes des fonctions relatives aux images
+ *
+ */
 #ifndef __arbq1_h_
 #define __arbq1_h_
 
 #include "arbq.h"
 
 /**
- * \fn
  * \brief renvoie un damier
- * \param Nat hauteur_du_damier
+ * \param i Nat hauteur_du_damier
  * \return Arbq damier
  * \pre rien
  */
-Arbq damier(Nat);
+Arbq damier(Nat i);
 
 /**
- * \fn
  * \brief fonction auxiliaire pour la symétrie horizontale
- * \param Arbq a
+ * \param a Arbq
  * \return Arbq a' (image miroir de a)
  * \pre rien
  */
-Arbq symh_aux(Arbq);
+Arbq symh_aux(Arbq a);
 
 /**
- * \fn
  * \brief fonction de symétrie horizontale de l'image
- * \param Arbq a
+ * \param a Arbq
  * \return Arbq a' (symétrie sur a)
  * \pre rien
  */
-Arbq symh(Arbq);
+Arbq symh(Arbq a);
 
 /**
- * \fn
  * \brief fonction auxiliaire pour la symétrie verticale
- * \param Arbq a
+ * \param a Arbq
  * \return Arbq a' (image miroir de a)
  * \pre rien
  */
-Arbq symv_aux(Arbq);
+Arbq symv_aux(Arbq a);
 
 /**
- * \fn
  * \brief fonction de symétrie verticale de l'image
- * \param Arbq a
+ * \param a Arbq
  * \return Arbq a' (symétrie sur a)
  * \pre rien
  */
-Arbq symv(Arbq);
+Arbq symv(Arbq a);
 
 /**
- * \fn
  * \brief opère une rotation à gauche
- * \param Arbq a
+ * \param a Arbq
  * \return Arbq a' (image tournée à 90° sur la gauche
  * \pre rien
  */
-Arbq rotg(Arbq);
+Arbq rotg(Arbq a);
 
 /**
- * \fn
  * \brief opère une rotation a droite
- * \param Arbq a
+ * \param a Arbq
  * \return Arbq a' (image tournée à 90° sur la droite
  * \pre rien
  */
-Arbq rotd(Arbq);
+Arbq rotd(Arbq a);
 
 /**
- * \fn
  * \brief opère un dézoom sur une image
- * \param Arbq a
+ * \param a Arbq
  * \return Arbq a' (image renvoyée avec un pixel sur quatre)
  * \pre rien
  */
-Arbq dzoo(Arbq);
+Arbq dzoo(Arbq a);
 
 /**
- * \fn
  * \brief supprime un Arbq
- * \param Arbq a
+ * \param a Arbq
  * \return NULL
  * \pre rien
  */
-Arbq dela(Arbq);
+Arbq dela(Arbq a);
 
 /**
- * \fn
  * \brief copie un arbre
- * \param Arbq a
+ * \param a Arbq
  * \return Arbq a' (renvoie une copie de a)
  * \pre rien
  */
-Arbq cpa(Arbq);
+Arbq cpa(Arbq a);
 
 /**
- * \fn
  * \brief prend un arbre et une fonction en argument et applique
  * l'opération sur cet arbre
- * \param Arbq a
- * \param Arbq fonction(Arbq)
+ * \param a Arbq 
+ * \param func Arbq fonction(Arbq)
  * \return Arbq a'
  * \pre les préconditions de func sur a
  */

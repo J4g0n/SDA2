@@ -1,3 +1,14 @@
+/**
+ * \file       parc.h
+ * \author     Andreux Simon
+ * \version    1.0
+ * \date       30 nov 2012
+ * \brief      include de parc.c 
+ *
+ * \details    Contient les prototypes des fonctions relatives au traitement des pixels
+ *
+ */
+
 #ifndef __parc_h_
 #define __parc_h_
 
@@ -9,43 +20,39 @@
 #define SEUIL 100
 
 /**
- * \fn
  * \brief parcoure une arbre et applique la fonction func sur chaque
  * pixel
- * \param Arbq a
- * \param Couleur fonction(Couleur)
+ * \param a Arbq
+ * \param func Couleur fonction(Couleur)
  * \return Arbq a' (arbre dont les pixels ont été modifiés par la
  * fonction func
  * \pre rien
  */
-Arbq parc(Arbq,Couleur (*func)());
+Arbq parc(Arbq a,Couleur (*func)());
 
 /**
- * \fn
  * \brief prend un pixel et renvoie un pixel dont les couleurs on été
  * inversées
- * \param Couleur c
+ * \param c Couleur
  * \return Couleur c' (pixel dont la couleur a été inversée
  * \pre c≠NULL
  */
-Couleur invc(Couleur);
+Couleur invc(Couleur c);
 
 /**
- * \fn
  * \brief transforme un pixel en niveau de gris
- * \param Couleur c
+ * \param c Couleur
  * \return Couleur c' (renvoie le pixel en niveau de gris)
  * \pre c≠NULL
  */
-Couleur nivg(Couleur);
+Couleur nivg(Couleur c);
 
 /**
- * \fn
  * \brief seuil le pixel selon une certaine valeur
- * \param Couleur c
+ * \param c Couleur
  * \return Couleur c' (pixel modifié ou non selon la valeur de c)
  * \pre c≠NULL
  */
-Couleur tresh(Couleur);
+Couleur tresh(Couleur c);
 
 #endif

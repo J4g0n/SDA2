@@ -1,137 +1,143 @@
+/**
+ * \file       arbq.h
+ * \author     Andreux Simon
+ * \version    1.0
+ * \date       30 nov 2012
+ * \brief      include de arbq.c 
+ *
+ * \details    Contient les prototypes des fonctions relatives aux arbre quaternaires
+ *
+ */
 #ifndef __arbq_h_
 #define __arbq_h_
 
 #include "couleur.h"
 
-
-enum type {COULEUR,NOEUD};
+/**
+ * \enum type enum
+ * \brief permet de déterminer si un noeud d'un arbre quaternaire est une feuille ou pas
+ */
+enum type 
+{
+COULEUR, /** !<COULEUR */
+NOEUD /** !<NOEUD */
+};
 
 /**
- * \typedef type Arbq qui couleur qui contient des pointeurs vers les
+ * \struct type Arbq qui couleur qui contient des pointeurs vers les
  * sous-arbres et un pointeur vers une couleur ainsi qu'un type enum
  * permettant de sélectionner l'un ou l'autre
  */
 typedef struct arbq
 {
-	enum type t;
-	Couleur c;
-	struct arbq *no;
-	struct arbq *ne;
-	struct arbq *so;
-	struct arbq *se;
-} *Arbq, strArbq;
+	enum type t; /** !<type déterminant si l'arbre est un noeud ou une feuille */
+	Couleur c; /** !<couleur */
+	struct arbq *no; /** !<sous-arbre nord-ouest */
+	struct arbq *ne; /** !<sous-arbre nord-est */
+	struct arbq *so; /** !<sous-arbre sud-ouest */
+	struct arbq *se; /** !<sous-arbre sud-est */
+} *Arbq, strArbq; /** !<structure arbre quaternaire */
 
 /**
- * \fn
  * \brief renvoie la taille du côté de l'image
- * \param Arbq a
+ * \param a Arbq
  * \return Nat taille
  * \pre rien
  */
-Nat tc(Arbq);
+Nat tc(Arbq a);
 
 /**
- * \fn
  * \brief crée une feuille à partir d'une couleur
- * \param Couleur c
+ * \param c Couleur
  * \return Arbq a
  * \pre c≠NULL
  */
-Arbq f(Couleur);
+Arbq f(Couleur c);
 
 /**
- * \fn
  * \brief crée un arbre en enracinant quatre sous-arbres
- * \param Arbq a0
- * \param Arbq a1
- * \param Arbq a2
- * \param Arbq a3
+ * \param no Arbq 
+ * \param ne Arbq 
+ * \param so Arbq 
+ * \param se Arbq 
  * \return Arbq a
  * \pre rien
  */
-Arbq e(Arbq,Arbq,Arbq,Arbq);
+Arbq e(Arbq no,Arbq ne,Arbq so,Arbq se);
 
 /**
- * \fn
  * \brief renvoie le sous-arbre nord-ouest
- * \param Arbq a
+ * \param a Arbq
  * \return Arbq nord-ouest
  * \pre ¬estf(a)
  */
-Arbq no(Arbq);
+Arbq no(Arbq a);
 
 /**
  * \brief renvoie le sous-arbre nord-est
- * \param Arbq a
+ * \param a Arbq
  * \return Arbq nord-est
  * \pre ¬estf(a)
  */
-Arbq ne(Arbq);
+Arbq ne(Arbq a);
 
 /**
- * \fn
  * \brief renvoie le sous-arbre sud-ouest
- * \param Arbq a
+ * \param a Arbq
  * \return Arbq sud-ouest
  * \pre ¬estf(a)
  */
-Arbq so(Arbq);
+Arbq so(Arbq a);
 
 /**
- * \fn
  * \brief renvoie le sous-arbre sud-est
- * \param Arbq a
+ * \param a Arbq
  * \return Arbq sud-est
  * \pre ¬estf(a)
  */
-Arbq se(Arbq);
+Arbq se(Arbq a);
 
 /**
- * \fn
  * \brief renvoie la hauteur de l'arbre passé en entrée
- * \param Arbq a
+ * \param a Arbq
  * \return Nat ht
  * \pre rien
  */
-Nat h(Arbq);
+Nat h(Arbq a);
 
 /**
- * \fn
  * \brief renvoie une copie passée de la couleur contenue dans la feuille
  * en entrée
- * \param Arbq a
+ * \param a Arbq 
  * \return Couleur c
  * \pre estf(a)
  */
-Couleur c(Arbq);
+Couleur c(Arbq a);
 
 /**
- * \fn
  * \brief renvoie 1 si l'entrée est une feuille, 0 sinon
- * \param Arbq a
+ * \param a Arbq
  * \return Couleur c
  * \pre rien
  */
-Bool estf(Arbq);
+Bool estf(Arbq a);
 
 /**
- * \fn
  * \brief renvoie le nombre de feuille de l'arbre
- * \param Arbq a
+ * \param a Arbq
  * \return Nat nb_feuille
  * \pre rien
  */
-Nat nf(Arbq);
+Nat nf(Arbq a);
 
 /**
- * \fn
  * \brief renvoie le pixel aux coordonnées x, y passés en entrée
- * \param Arbq a
- * \param Nat x
- * \param Nat y
+ * \param a Arbq
+ * \param i Nat
+ * \param j Nat
  * \return Couleur c
  * \pre x<2^(h(a)) et y<2^(h(a)) 
  */
-Couleur p(Arbq,Nat,Nat);
+Couleur p(Arbq a,Nat i,Nat j);
 
 #endif
